@@ -1,0 +1,6 @@
+<div [class]="'card card--' + variant">
+  <div *ngIf="icon" class="card__icon">{{ icon }}</div>
+  <h3 *ngIf="title" class="card__title">{{ title }}</h3>
+  <p *ngIf="description" class="card__description">{{ description }}</p>
+  <ng-content></ng-content>
+</div>

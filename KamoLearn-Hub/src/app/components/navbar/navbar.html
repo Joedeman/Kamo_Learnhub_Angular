@@ -1,0 +1,59 @@
+<nav class="navbar">
+  <div class="navbar__container">
+    <!-- Logo -->
+    <div class="navbar__logo">
+      <span class="navbar__logo-text">Tutoring with <span class="gradient-text">Kamo</span></span>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <ul class="navbar__links">
+      <li *ngFor="let link of navLinks">
+        <a 
+          [href]="link.href" 
+          (click)="scrollToSection(link.href); $event.preventDefault()"
+          class="navbar__link">
+          {{ link.label }}
+        </a>
+      </li>
+    </ul>
+
+    <!-- LearnHub Button -->
+    <div class="navbar__actions">
+      <app-button 
+        text="LearnHub" 
+        variant="primary"
+        size="medium"
+        icon="→"
+        (clicked)="navigateToLearnHub()">
+      </app-button>
+    </div>
+
+    <!-- Mobile Menu Toggle -->
+    <button class="navbar__toggle" (click)="toggleMenu()" [class.active]="isMenuOpen">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="navbar__mobile" [class.active]="isMenuOpen">
+    <ul class="navbar__mobile-links">
+      <li *ngFor="let link of navLinks">
+        <a 
+          [href]="link.href" 
+          (click)="scrollToSection(link.href); $event.preventDefault()"
+          class="navbar__mobile-link">
+          {{ link.label }}
+        </a>
+      </li>
+      <li>
+        <app-button 
+          text="LearnHub" 
+          variant="primary"
+          (clicked)="navigateToLearnHub()">
+        </app-button>
+      </li>
+    </ul>
+  </div>
+</nav>

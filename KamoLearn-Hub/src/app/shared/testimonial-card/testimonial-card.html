@@ -1,0 +1,16 @@
+<div class="testimonial-card">
+  <div class="testimonial-card__quote">"</div>
+  <p class="testimonial-card__message">{{ message }}</p>
+  
+  <div class="testimonial-card__footer">
+    <div class="testimonial-card__info">
+      <h4 class="testimonial-card__name">{{ name }}</h4>
+      <p *ngIf="achievement" class="testimonial-card__achievement">
+        {{ achievement }}
+      </p>
+      <p *ngIf="institution" class="testimonial-card__institution">
+        {{ institution }}
+      </p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,87 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "tailwindcss";
+
+/* Add Tailwind directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Your global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #0A1628;
+  color: #FFFFFF;
+}
+
+:root {
+  /* =========================
+     Colors
+  ========================= */
+  --color-primary: #0A1628;
+  --color-secondary: #00D4FF;
+  --color-accent: #7C3AED;
+  --color-success: #10B981;
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #E5E7EB;
+
+  /* =========================
+     Spacing
+  ========================= */
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 24px;
+  --spacing-lg: 32px;
+  --spacing-xl: 48px;
+  --spacing-2xl: 64px;
+  --spacing-3xl: 96px;
+
+  /* =========================
+     Typography
+  ========================= */
+  --font-size-xs: 14px;
+  --font-size-sm: 16px;
+  --font-size-md: 18px;
+  --font-size-lg: 24px;
+  --font-size-xl: 32px;
+  --font-size-2xl: 48px;
+  --font-size-3xl: 72px;
+
+  /* =========================
+     Border Radius
+  ========================= */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+
+  /* =========================
+     Shadows
+  ========================= */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* =========================
+   Fix Gradient Text Clipping
+========================= */
+/* Apply to all elements with gradient text */
+h1, h2, h3, h4, h5, h6,
+.section-heading__title,
+.hero__title,
+.hero__title--gradient,
+[class*="--gradient"],
+[style*="background-clip: text"],
+[style*="-webkit-background-clip: text"] {
+  /* Fix clipping */
+  line-height: 1.2;       /* ensures vertical space for tall characters */
+  display: inline-block;  /* prevents vertical overflow being hidden */
+  margin: 0;              /* remove any default margin that may cut text */
+  padding: 2px 0;         /* add small vertical padding for breathing room */
+}
