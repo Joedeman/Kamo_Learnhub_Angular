@@ -1,0 +1,26 @@
+<div class="student-create-container">
+  <h2>Create Student</h2>
+
+  <!-- USER INFO eish -->
+  <div class="form-section">
+    <h3>User Info</h3>
+    <input placeholder="Name" [(ngModel)]="userDTO.name">
+    <input placeholder="Surname" [(ngModel)]="userDTO.surname">
+    <input placeholder="Email" [(ngModel)]="userDTO.email" type="email">
+    <input placeholder="Phone Number" [(ngModel)]="userDTO.phoneNumber">
+    <input placeholder="Password" [(ngModel)]="userDTO.password" type="password">
+  </div>
+
+  <!-- STUDENT INFO -->
+  <div class="form-section">
+    <h3>Student Info</h3>
+    <input placeholder="Grade" [(ngModel)]="studentDTO.grade">
+    <input placeholder="Curriculum" [(ngModel)]="studentDTO.curriculum">
+    <label class="checkbox-label">
+      <input type="checkbox" [(ngModel)]="studentDTO.isActive">
+      Active
+    </label>
+  </div>
+
+  <button class="btn-submit" (click)="submit()">Create Student</button>
+</div>

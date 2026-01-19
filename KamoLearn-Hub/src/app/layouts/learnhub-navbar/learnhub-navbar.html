@@ -1,58 +1,47 @@
-<nav class="sidebar">
-  <div class="sidebar-header">
-    <div class="logo-container">
-      <div class="logo-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-          <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
-        </svg>
-      </div>
-      <div class="logo-text">
-        <h1 class="logo-title">LearnHub</h1>
-        <p class="logo-subtitle">Admin Portal</p>
+<div class="layout" [class.collapsed]="isCollapsed">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+
+    <div class="sidebar-header">
+      <button class="collapse-btn" (click)="toggleSidebar()">☰</button>
+
+      <div class="logo-container">
+        <div class="logo-icon">
+          🎓
+        </div>
+        <div class="logo-text">
+          <h1>LearnHub</h1>
+          <p>Admin Portal</p>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="nav-menu">
-    <a href="#" class="nav-item active">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="3" y="3" width="7" height="7"></rect>
-        <rect x="14" y="3" width="7" height="7"></rect>
-        <rect x="14" y="14" width="7" height="7"></rect>
-        <rect x="3" y="14" width="7" height="7"></rect>
-      </svg>
-      <span>Dashboard</span>
-    </a>
+    <div class="nav-menu">
+      <a routerLink="/learnhub/admin" class="nav-item">
+        📊 <span class="nav-text">Dashboard</span>
+      </a>
 
-    <a href="#" class="nav-item">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-        <circle cx="9" cy="7" r="4"></circle>
-        <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
-        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-      </svg>
-      <span>Manage Students</span>
-    </a>
+      <a routerLink="/learnhub/students" class="nav-item">
+        👥 <span class="nav-text">Manage Students</span>
+      </a>
 
-    <a href="#" class="nav-item">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-        <polyline points="17 8 12 3 7 8"></polyline>
-        <line x1="12" y1="3" x2="12" y2="15"></line>
-      </svg>
-      <span>Upload Video</span>
-    </a>
-  </div>
+      <a class="nav-item">
+        ⬆️ <span class="nav-text">Upload Video</span>
+      </a>
+    </div>
 
-  <div class="sidebar-footer">
-    <a href="#" class="nav-item logout">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-        <polyline points="16 17 21 12 16 7"></polyline>
-        <line x1="21" y1="12" x2="9" y2="12"></line>
-      </svg>
-      <span>Logout</span>
-    </a>
-  </div>
-</nav>
+    <div class="sidebar-footer">
+      <a class="nav-item logout">
+        🚪 <span class="nav-text">Logout</span>
+      </a>
+    </div>
+
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="content">
+    <router-outlet></router-outlet>
+  </main>
+
+</div>

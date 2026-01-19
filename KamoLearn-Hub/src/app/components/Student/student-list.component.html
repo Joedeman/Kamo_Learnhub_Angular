@@ -1,0 +1,28 @@
+<table class="student-table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Grade</th>
+      <th>Curriculum</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let s of students">
+      <td>{{ s.fullName }}</td>
+      <td>{{ s.email }}</td>
+      <td>{{ s.grade }}</td>
+      <td>{{ s.curriculum }}</td>
+      <td>
+        <span [class.active]="s.isActive" [class.inactive]="!s.isActive">
+          {{ s.isActive ? 'Active' : 'Inactive' }}
+        </span>
+      </td>
+      <td>
+        <button (click)="deleteStudent(s.student_ID)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
