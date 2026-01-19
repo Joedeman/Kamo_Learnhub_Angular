@@ -10,7 +10,7 @@ import { User } from '../models/user.model';
 })
 export class AuthService {
 
-  private baseUrl = environment.apiUrl;
+  private baseUrl = environment.apiUrl; // remember to set this in your environment files
 
   constructor(private http: HttpClient) {}
 
