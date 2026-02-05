@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { UserService } from '../../services/user.service';
 import { StudentService } from '../../services/student.service';
 import { CreateUserDTO } from '../../DTO/create-user-dto';
@@ -33,12 +35,33 @@ export class StudentCreateComponent {
     isActive: true
   };
 
+  isSubmitting: boolean = false;
+
   constructor(
     private userService: UserService,
-    private studentService: StudentService
+    private studentService: StudentService,
+    private router: Router,
+    private location: Location
   ) {}
 
+  goBack(): void {
+    this.location.back();
+  }
+
   submit(): void {
+    // Basic validation
+    if (!this.userDTO.name || !this.userDTO.surname || !this.userDTO.email || !this.userDTO.password) {
+      alert('Please fill in all required user information fields');
+      return;
+    }
+
+    if (!this.studentDTO.grade || !this.studentDTO.curriculum) {
+      alert('Please fill in all required student information fields');
+      return;
+    }
+
+    this.isSubmitting = true;
+
     // 1️⃣ Create user first
     this.userService.createUser(this.userDTO).subscribe({
       next: (createdUser: any) => {
@@ -50,13 +73,22 @@ export class StudentCreateComponent {
         this.studentService.create(this.studentDTO).subscribe({
           next: () => {
             alert('Student successfully registered!');
-            // Reset form if needed
-            this.resetForm();
+            this.isSubmitting = false;
+            // Navigate back to student list
+            this.router.navigate(['/learnhub/students']);
           },
-          error: (err) => console.error('Error creating student:', err)
+          error: (err) => {
+            console.error('Error creating student:', err);
+            this.isSubmitting = false;
+            alert('Failed to create student. Please try again.');
+          }
         });
       },
-      error: (err) => console.error('Error creating user:', err)
+      error: (err) => {
+        console.error('Error creating user:', err);
+        this.isSubmitting = false;
+        alert('Failed to create user. Please try again.');
+      }
     });
   }
 

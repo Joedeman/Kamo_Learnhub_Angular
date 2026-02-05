@@ -8,6 +8,7 @@ import { AdminDashboard } from './pages/admin-dashboard/admin-dashboard';
 import { StudentDashboard } from './pages/student-dashboard/student-dashboard';
 import { StudentCreateComponent } from './components/Student/student-create.component';
 import { StudentListComponent } from './components/Student/student-list.component';
+import { Adminlayout } from './layouts/adminlayout/adminlayout';
 
 
 // If it belongs to LearnHub → it goes under the learnhub children array
@@ -32,10 +33,12 @@ export const routes: Routes = [
     component: LearnhubLayoutComponent,
     children: [
       {
-        path: 'admin',
-        component: AdminDashboard,
-        title: 'Admin Dashboard'
-      },
+    path: 'admin',
+    component: Adminlayout,
+    children: [
+      { path: 'dashboard', component: AdminDashboard }
+    ]
+  },
       {
         path: 'student',
         component: StudentDashboard,
